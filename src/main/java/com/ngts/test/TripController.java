@@ -13,9 +13,16 @@ public class TripController {
     @Autowired
     private TripService TripService;
 
-    @GetMapping
+    @GetMapping()
     public List<Trip> getAll(){
-        return TripService.getAllTrip();
+        return TripService.getAll();
     }
+
+   @GetMapping(path = "cheapest/{origin}/{destination}")
+    public List<Trip> getByOriginDestination(@PathVariable String origin, @PathVariable  String destination){
+        return TripService.getByOriginDestination(origin, destination);
+    }
+
+
 
 }
